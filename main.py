@@ -214,23 +214,39 @@ while True:
             # asks user for input file then executes program
 
             carFile = str(input("\nName of the car file: "))
+
+            while not os.path.isfile("imports/" + carFile):
+                print("\n" + carFile + " does not exist in the imports folder")
+                carFile = str(input("Name of the car file: "))
+
             modifyMenu(carFile)
         case 2:
 
             # asks user for input file then gets a list of all valid cars in that list
 
             listName = str(input("\nName of the list file: "))
+
+            while not os.path.isfile("imports/" + listName):
+                print("\n" + listName + " does not exist in the imports folder")
+                listName = str(input("\nName of the list file: "))
+
             openedList = open("imports/" + listName)
 
             validCars = []
+            inValidCars = 0
             print("\n")
             for i in openedList:
                 if i[0] == "+":
-                    validCars.append(i[1:-1])
-                    print(i[1:-1] + " detected")
+                    if os.path.isfile("imports/" + i[1:-1]):
+                        validCars.append(i[1:-1])
+                        print(i[1:-1] + " found")
+                    else:
+                        print(i[1:-1] + " does not exist in imports folder")
+                        inValidCars += 1
                 
             openedList.close()
-            print("\n" + str(len(validCars)) + " cars detected")
+            print("\n" + str(len(validCars)) + " cars found")
+            print(str(inValidCars) + " cars do not exist in imports folder")
             modifyMenu(validCars,True)
 
 '''
