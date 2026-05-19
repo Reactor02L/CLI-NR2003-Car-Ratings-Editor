@@ -6,6 +6,7 @@ Unless you can't (like me) just use NRatings
 NRatings is better (has a GUI) and can do more easier, but is a ClickOnce application and requires .NET, which are both a pain to get working on Linux (I can't tell you about MacOS)
 
 ## How to Use
+
 Python installed (the program was made with python3)
 Copy the .car files of the cars you want to modify into the imports folder along with the .lst (roster file located in the same directory as the .car files) containing all the car files you want to modify
 After running the program, copy the the modified car files back into their original folder
